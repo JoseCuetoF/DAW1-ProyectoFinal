@@ -17,5 +17,6 @@ public interface MaintenanceUsuarioService {
 
     Boolean insertUser(UsuarioCreateDto usuarioCreateDto);
 
-
+    //LOGUEO
+    Boolean loginUser(String email, String password);
 }

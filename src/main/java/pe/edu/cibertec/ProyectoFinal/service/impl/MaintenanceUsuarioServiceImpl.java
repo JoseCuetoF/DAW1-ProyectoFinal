@@ -75,7 +75,6 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     public Boolean insertUser(UsuarioCreateDto usuarioCreateDto) {
 
         try {
-
             Usuario user = new Usuario();
             user.setNombres(usuarioCreateDto.nombres());
             user.setApellidos(usuarioCreateDto.apellidos());
@@ -89,5 +88,20 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public Boolean loginUser(String email, String password) {
+        Optional<Usuario> optional = userRepository.findByCorreo(email);
+
+        if (optional.isPresent()) {
+            Usuario user = optional.get();
+
+
+            if (user.getPassword().equals(password)) {
+                return true; // Login exitoso
+            }
+        }
+        return false; // Login fallido
     }
 }
