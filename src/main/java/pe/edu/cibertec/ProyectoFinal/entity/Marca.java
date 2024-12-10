@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+import java.util.List;
 
 
 @Entity
@@ -19,7 +19,11 @@ public class Marca {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMarca;
-    private String  nombre;
+    private String nombre;
     private int activo;
     private Date fechaRegistro;
+
+    @OneToMany
+    private List<Producto> productos;
+
 }

@@ -1,9 +1,6 @@
 package pe.edu.cibertec.ProyectoFinal.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,8 +18,10 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPro;
-    private Integer idMarca;
-    private Integer idCategoria;
+
+    //private Integer idMarca;
+    //private Integer idCategoria;
+
     private String nombre;
     private String detalles;
     private String urlImg;
@@ -31,9 +30,12 @@ public class Producto {
     private Double precio;
     private int activo;
 
+    @ManyToOne
+    @JoinColumn(name = "idMarca")
+    private Marca marca;
 
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "idCategoria")
+    private Categoria categoria;
 
 }
