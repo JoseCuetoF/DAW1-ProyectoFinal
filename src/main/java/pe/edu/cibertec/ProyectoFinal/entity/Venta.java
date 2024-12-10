@@ -21,7 +21,7 @@ public class Venta {
     private Integer cantidadProducto;
     private Double montoTotal;
     private String contacto;
-    private Integer idDistrito;
+  //  private Integer idDistrito;
     private Integer telefono;
     private String direccion;
     private String idTransaccion;
@@ -33,7 +33,7 @@ public class Venta {
 
     //bi-directional many-to-one association to Detalleventa
     @OneToMany(mappedBy="venta")
-    private List<Venta> ventas;
+    private List<DetalleVenta> detalleVentas;
 
     //bi-directional many-to-one association to Distrito
     @ManyToOne
