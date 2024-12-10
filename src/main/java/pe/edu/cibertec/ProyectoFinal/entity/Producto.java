@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-
+import java.util.List;
 
 
 @Entity
@@ -26,9 +26,9 @@ public class Producto {
     private String detalles;
     private String urlImg;
     private Date fechaRegistro;
-    private int stock;
+    private Integer stock;
     private Double precio;
-    private int activo;
+    private Integer activo;
 
     @ManyToOne
     @JoinColumn(name = "idMarca")
@@ -37,5 +37,9 @@ public class Producto {
     @ManyToOne
     @JoinColumn(name = "idCategoria")
     private Categoria categoria;
+
+    //------
+    @OneToMany
+    private List<DetalleVenta> detalleVentas;
 
 }
