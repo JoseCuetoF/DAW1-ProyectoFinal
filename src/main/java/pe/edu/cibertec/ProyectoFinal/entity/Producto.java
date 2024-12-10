@@ -30,9 +30,6 @@ public class Producto {
     private Double precio;
     private Integer activo;
 
-
-
-
     @ManyToOne
     @JoinColumn(name = "idMarca")
     private Marca marca;

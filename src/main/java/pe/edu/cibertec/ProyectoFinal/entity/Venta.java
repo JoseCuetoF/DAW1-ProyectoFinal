@@ -33,7 +33,7 @@ public class Venta {
 
     //bi-directional many-to-one association to Detalleventa
     @OneToMany(mappedBy="venta")
-    private List<DetalleVenta> detalleVentas;
+    private List<DetalleVenta> detalleventas;
 
     //bi-directional many-to-one association to Distrito
     @ManyToOne
