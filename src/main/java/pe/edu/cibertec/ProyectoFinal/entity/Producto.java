@@ -30,6 +30,9 @@ public class Producto {
     private Double precio;
     private Integer activo;
 
+
+
+
     @ManyToOne
     @JoinColumn(name = "idMarca")
     private Marca marca;
@@ -39,7 +42,11 @@ public class Producto {
     private Categoria categoria;
 
     //------
-    @OneToMany
+    @OneToMany(mappedBy="producto")
     private List<DetalleVenta> detalleVentas;
+
+    //bi-directional many-to-one association to Carrito
+    @OneToMany(mappedBy="producto")
+    private List<Carrito> carritos;
 
 }

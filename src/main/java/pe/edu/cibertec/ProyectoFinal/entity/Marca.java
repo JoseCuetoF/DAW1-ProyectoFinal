@@ -23,7 +23,8 @@ public class Marca {
     private int activo;
     private Date fechaRegistro;
 
-    @OneToMany
+    //bi-directional many-to-one association to Producto
+    @OneToMany(mappedBy="marca")
     private List<Producto> productos;
 
 }

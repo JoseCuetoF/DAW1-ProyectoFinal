@@ -25,6 +25,13 @@ public class Cliente {
     private String password;
     private Date fechaRegistro;
 
-    @OneToMany
+    //bi-directional many-to-one association to Carrito
+    @OneToMany(mappedBy="cliente")
+    private List<Carrito> carritos;
+
+    //bi-directional many-to-one association to Venta
+    @OneToMany(mappedBy="cliente")
     private List<Venta> ventas;
+
+
 }

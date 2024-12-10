@@ -22,8 +22,11 @@ public class Categoria {
     private Integer activo;
     private Date fechaRegistro;
 
-    @OneToMany
+    //bi-directional many-to-one association to Producto
+    @OneToMany(mappedBy="categoria")
     private List<Producto> productos;
+
+
 
 
 }

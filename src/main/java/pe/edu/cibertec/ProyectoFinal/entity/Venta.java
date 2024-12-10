@@ -31,7 +31,14 @@ public class Venta {
     @JoinColumn(name = "idCliente")
     private Cliente cliente;
 
-    //------
-    @OneToMany
+    //bi-directional many-to-one association to Detalleventa
+    @OneToMany(mappedBy="venta")
     private List<Venta> ventas;
+
+    //bi-directional many-to-one association to Distrito
+    @ManyToOne
+    @JoinColumn(name="idDistrito")
+    private Distrito distrito;
+
+
 }
