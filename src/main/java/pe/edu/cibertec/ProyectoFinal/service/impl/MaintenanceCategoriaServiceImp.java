@@ -23,7 +23,6 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
         Iterable<Categoria> iterable = categoriaRepository.findAll();
         iterable.forEach(categoria -> {
             CategoriaDto categoriaDto = new CategoriaDto(categoria.getIdCategoria(),
-                    categoria.getProductos().toString(),
                     categoria.getNombre(),
                     categoria.getActivo(),
                     categoria.getFechaRegistro());

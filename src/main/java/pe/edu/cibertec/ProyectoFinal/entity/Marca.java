@@ -18,6 +18,7 @@ public class Marca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name="id_marca")
     private Integer idMarca;
     private String nombre;
     private int activo;

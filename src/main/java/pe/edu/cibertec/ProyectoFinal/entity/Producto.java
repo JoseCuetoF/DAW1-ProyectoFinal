@@ -31,7 +31,7 @@ public class Producto {
     private Integer activo;
 
     @ManyToOne
-    @JoinColumn(name = "idMarca")
+    @JoinColumn(name = "id_marca")
     private Marca marca;
 
     @ManyToOne
