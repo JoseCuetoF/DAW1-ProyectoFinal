@@ -2,6 +2,7 @@ package pe.edu.cibertec.ProyectoFinal.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.cibertec.ProyectoFinal.dto.UserLoginDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioCreateDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDetailDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDto;
@@ -93,13 +94,12 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
 
     @Override
     public Boolean loginUser(String email, String password) {
-        Optional<Usuario> optional = userRepository.findByCorreo(email);
+        Optional<UserLoginDto> optional = userRepository.findByCorreo(email);
 
         if (optional.isPresent()) {
-            Usuario user = optional.get();
+            UserLoginDto user = optional.get();
 
-
-            if (user.getPassword().equals(password)) {
+            if (user.password().equals(password)) {
                 return true; // Login exitoso
             }
         }

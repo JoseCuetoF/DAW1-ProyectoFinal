@@ -18,22 +18,29 @@ public class AdminController {
     // Método para mostrar el formulario de login
     @GetMapping("/loginAdmin")
     public String loginAdmin(Model model) {
-        model.addAttribute("userLoginDto", new UserLoginDto("",""));
-        return "login-admin"; // Este es el nombre de tu vista de login
+
+        UserLoginDto userLoginDto = new UserLoginDto("","");
+        model.addAttribute("userLoginDto", userLoginDto);
+
+        return "login-admin";
+
     }
 
     // Método para procesar el login
     @PostMapping("/loginAdminSuccessfully")
     public String loginAdminSuccessfully(@ModelAttribute UserLoginDto userLoginDto) {
+
         // Validar el login usando el servicio
         boolean loginSuccess = maintenanceUsuarioService.loginUser(userLoginDto.correo(), userLoginDto.password());
 
         if (loginSuccess) {
 
             return "redirect:/maintenanceUsers/start";
+
         } else {
 
             return "redirect:/loginAdmin?error=true";
+
         }
     }
 

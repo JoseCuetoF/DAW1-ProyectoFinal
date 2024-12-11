@@ -1,0 +1,71 @@
+body {
+    background: linear-gradient(135deg, #1e1e2a, #602030);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-container {
+    display: flex;
+    width: 700px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+.left-panel {
+    background: #2a1a38;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.left-panel img {
+    width: 200px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+}
+.left-panel h1 {
+    font-size: 24px;
+    margin-top: 10px;
+    color: #ff876f;
+}
+.right-panel {
+    flex: 1.5;
+    background: #331b47;
+    padding: 40px;
+}
+.form-control {
+    background: transparent;
+    border: 1px solid #ff876f;
+    color: white;
+    border-radius: 20px;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #ff876f;
+}
+.btn-custom {
+    background: #ff876f;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+.btn-custom:hover {
+    background: #e86451;
+}
+.forgot-password {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff876f;
+}
+.forgot-password a {
+    text-decoration: none;
+    color: #ff876f;
+}
