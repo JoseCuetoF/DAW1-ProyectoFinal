@@ -2,9 +2,9 @@ package pe.edu.cibertec.ProyectoFinal.dto;
 
 import java.util.Date;
 
-public record ProductoDetailDto(Integer idPro,
-                                String nombreMarca,
-                                String nombreCategoria,
+public record ProductoCreateDto(Integer idPro,
+                                Integer idMarca,
+                                Integer idCategoria,
                                 String nombre,
                                 String detalles,
                                 String urlImg,

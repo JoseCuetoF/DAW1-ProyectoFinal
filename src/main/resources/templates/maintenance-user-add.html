@@ -7,23 +7,34 @@
 </head>
 <body>
 <div class="container mt-4">
-    <h1 class="text-center">Agregar Usuario</h1>
-    <form th:action="@{/maintenanceUsers/addUserConfirm}" th:object="${usuarioDetailDto}" method="post">
-        <div class="mb-3">
-            <label for="nombres" class="form-label">Nombres:</label>
-            <input type="text" class="form-control" id="nombres" name="nombres" th:field="*{nombres}" required>
+
+    <div class="row">
+        <!-- Incrustar el panel administrativo -->
+        <div class="col-md-3">
+            <div th:replace="fragments/maintenance :: adminBody"></div>
         </div>
-        <div class="mb-3">
-            <label for="apellidos" class="form-label">Apellidos:</label>
-            <input type="text" class="form-control" id="apellidos" name="apellidos" th:field="*{apellidos}" required>
+
+        <div class="col-md-9">
+            <h1 class="text-center">Agregar Usuario</h1>
+            <form th:action="@{/maintenanceUsers/addUserConfirm}" th:object="${usuarioDetailDto}" method="post">
+                <div class="mb-3">
+                    <label for="nombres" class="form-label">Nombres:</label>
+                    <input type="text" class="form-control" id="nombres" name="nombres" th:field="*{nombres}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellidos" class="form-label">Apellidos:</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" th:field="*{apellidos}"
+                           required>
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a th:href="@{/maintenanceUsers/start}" class="btn btn-secondary">Cancelar</a>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="correo" class="form-label">Correo:</label>
-            <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a th:href="@{/maintenanceUsers/start}" class="btn btn-secondary">Cancelar</a>
-    </form>
+    </div>
 </div>
 </body>
 </html>

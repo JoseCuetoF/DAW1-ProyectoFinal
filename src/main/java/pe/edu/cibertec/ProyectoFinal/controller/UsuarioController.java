@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioCreateDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDetailDto;
+import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceUsuarioService;
 
 import java.util.Date;
@@ -21,7 +22,7 @@ public class UsuarioController {
     @GetMapping("/start")
     public String start(Model model) {
 
-        List<UsuarioDetailDto> users = maintenanceUsuarioService.findAllUsers();
+        List<UsuarioDto> users = maintenanceUsuarioService.findAllUsers();
         model.addAttribute("users", users);
         return "maintenance-users";
     }
@@ -66,8 +67,8 @@ public class UsuarioController {
     }
 
     @PostMapping("/editUser")
-    public String editUser(@ModelAttribute UsuarioDetailDto usuarioDetailDto) {
-        maintenanceUsuarioService.updateUser(usuarioDetailDto);
+    public String editUser(@ModelAttribute UsuarioDto usuarioDto) {
+        maintenanceUsuarioService.updateUser(usuarioDto);
         return "redirect:/maintenanceUsers/start";
     }
 

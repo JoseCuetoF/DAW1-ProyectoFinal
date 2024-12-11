@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioCreateDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDetailDto;
+import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDto;
 import pe.edu.cibertec.ProyectoFinal.entity.Usuario;
 import pe.edu.cibertec.ProyectoFinal.repository.UsuarioRepository;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceUsuarioService;
@@ -20,17 +21,17 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     UsuarioRepository userRepository;
 
     @Override
-    public List<UsuarioDetailDto> findAllUsers() {
-        List<UsuarioDetailDto> users = new ArrayList<UsuarioDetailDto>();
+    public List<UsuarioDto> findAllUsers() {
+        List<UsuarioDto> users = new ArrayList<UsuarioDto>();
         Iterable<Usuario> iterable = userRepository.findAll();
         iterable.forEach(user -> {
-            UsuarioDetailDto usuarioDetailDto = new UsuarioDetailDto(
+            UsuarioDto usuarioDto = new UsuarioDto(
                     user.getIdUsuario(),
                     user.getNombres(),
                     user.getApellidos(),
                     user.getCorreo(),
                     user.getFechaRegistro());
-            users.add(usuarioDetailDto);
+            users.add(usuarioDto);
         });
         return users;
     }
@@ -48,13 +49,13 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     }
 
     @Override
-    public Boolean updateUser(UsuarioDetailDto usuarioDetailDto) {
-        Optional<Usuario> optional = userRepository.findById(usuarioDetailDto.idUsuario());
+    public Boolean updateUser(UsuarioDto usuarioDto) {
+        Optional<Usuario> optional = userRepository.findById(usuarioDto.idUsuario());
         return optional.map(
                 user -> {
-                    user.setNombres(usuarioDetailDto.nombres());
-                    user.setApellidos(usuarioDetailDto.apellidos());
-                    user.setCorreo(usuarioDetailDto.correo());
+                    user.setNombres(usuarioDto.nombres());
+                    user.setApellidos(usuarioDto.apellidos());
+                    user.setCorreo(usuarioDto.correo());
                     user.setFechaRegistro(new Date());
 
                     userRepository.save(user);
