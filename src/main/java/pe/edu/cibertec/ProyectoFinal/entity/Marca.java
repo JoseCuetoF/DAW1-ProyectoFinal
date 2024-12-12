@@ -18,7 +18,7 @@ public class Marca {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name="id_marca")
+    @JoinColumn(name="idmarca")
     private Integer idMarca;
     private String nombre;
     private int activo;

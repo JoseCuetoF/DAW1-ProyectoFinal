@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.ProyectoFinal.dto.*;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceProductoService;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -34,36 +35,36 @@ public class ProductoController {
 
         ProductoDetailDto productoDetailDto = maintenanceProductoService.findProductById(id);
         model.addAttribute("productoDetailDto", productoDetailDto);
-        return "maintenance-product-detail";
+        return "maintenance-products-detail";
     }
 
-    //AGREGAR
-    @GetMapping("/addProduct")
-    public String addProduct(Model model) {
+        //AGREGAR
+        @GetMapping("/addProduct")
+        public String addProduct(Model model) {
 
-        List<MarcaDto> marcas = maintenanceProductoService.getAllBrands();
-        List<CategoriaListDto> categorias = maintenanceProductoService.getAllCategories();
+            List<MarcaDto> marcas = maintenanceProductoService.getAllBrands();
+            List<CategoriaListDto> categorias = maintenanceProductoService.getAllCategories();
 
 
-        ProductoCreateDto productoCreateDto = new ProductoCreateDto(
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                new Date(),
-                null,
-                null,
-                null
+            ProductoCreateDto productoCreateDto = new ProductoCreateDto(
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    new Date(),
+                    null,
+                    null,
+                    null
 
-        );
+            );
 
-        model.addAttribute("marcas", marcas);
-        model.addAttribute("categorias", categorias);
-        model.addAttribute("productoCreateDto", productoCreateDto);
-        return "maintenance-product-add";
-    }
+            model.addAttribute("marcas", marcas);
+            model.addAttribute("categorias", categorias);
+            model.addAttribute("productoCreateDto", productoCreateDto);
+            return "maintenance-products-add";
+        }
 
     @PostMapping("/addProductConfirm")
     public String addProductConfirm(@ModelAttribute ProductoCreateDto productoCreateDto) {
@@ -83,12 +84,10 @@ public class ProductoController {
             return "redirect:/maintenanceUsers/start";
         }
 
-
         model.addAttribute("marcas", marcas);
         model.addAttribute("categorias", categorias);
-
         model.addAttribute("productoDetailDto", productoDetailDto);
-        return "maintenance-user-edit";
+        return "maintenance-producto-edit";
     }
 
     @PostMapping("/editProduct")
