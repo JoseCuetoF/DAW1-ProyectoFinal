@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.cibertec.ProyectoFinal.dto.DistritoDto;
+import pe.edu.cibertec.ProyectoFinal.dto.VentaDetailDto;
 import pe.edu.cibertec.ProyectoFinal.dto.VentaDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceVentaService;
 
@@ -30,26 +32,36 @@ public class MaintenanceVentaController {
 
     @GetMapping("/detailVenta/{id}")
     public String detailVenta(@PathVariable Integer id, Model model) {
-        VentaDto ventaDto = maintenanceVentaService.findVentaById(id);
-        model.addAttribute("ventaDto",ventaDto);
-        return "maintenance-ventas";
+        VentaDetailDto ventaDetailDto = maintenanceVentaService.findVentaById(id);
+        model.addAttribute("venta",ventaDetailDto);
+        return "maintenance-venta-detail";
     }
 
     //Editar
 
     @GetMapping("/editVenta/{id}")
     public String editVenta(@PathVariable("id") int id, Model model) {
-        VentaDto ventaDto = maintenanceVentaService.findVentaById(id);
-        if(ventaDto == null) {
+
+        List<DistritoDto> distritos = maintenanceVentaService.findAllDistritos();
+
+        VentaDetailDto ventaDetailDto = maintenanceVentaService.findVentaById(id);
+        if(ventaDetailDto == null) {
             return "redirect:maintenanceVenta/start";
         }
-        model.addAttribute("ventaDto",ventaDto);
-        return "maintenance-ventas-edit";
+
+        model.addAttribute("distritos",distritos);
+        model.addAttribute("venta",ventaDetailDto);
+        // Verificar que la fechaVenta esté correctamente configurada
+        System.out.println("Fecha de Venta: " + ventaDetailDto.fechaVenta()); // Log para depuración
+
+        return "maintenance-venta-edit";
+
+
     }
 
     @PostMapping("/editVenta")
-    public String editVenta(@ModelAttribute VentaDto ventaDto) {
-        maintenanceVentaService.updateVenta(ventaDto);
+    public String editVenta(@ModelAttribute VentaDetailDto ventaDetailDto) {
+        maintenanceVentaService.updateVenta(ventaDetailDto);
         return "redirect:/maintenanceVenta/start";
     }
 

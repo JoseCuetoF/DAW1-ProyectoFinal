@@ -15,7 +15,7 @@ public class Distrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String idDistrito;
+    private Integer idDistrito;
     private String descripcion;
 
     //bi-directional many-to-one association to Venta

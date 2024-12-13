@@ -1,5 +1,5 @@
 package pe.edu.cibertec.ProyectoFinal.dto;
 
-public record DistritoDto(String idDistrito,
+public record DistritoDto(Integer idDistrito,
                           String descripcion) {
 }
