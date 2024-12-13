@@ -44,8 +44,9 @@ public class AdminController {
         }
     }
 
-    @GetMapping("/admin")
-    public String showAdminPanel() {
-        return "maintenance";
+
+    @GetMapping("/dashboard")
+    public String showAdminDashboard() {
+        return "dashboard";
     }
 }

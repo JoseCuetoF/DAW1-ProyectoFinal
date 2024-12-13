@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="dashboardHead">
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/estilos2.css">
+</head>
+<body th:fragment="dashboardBody">
+
+
+<div class="sidebar">
+
+    <div class="list-group mt-4">
+
+        <h5 class="text-center">Bienvenido admin especial :D</h5>
+
+        <img src="https://via.placeholder.com/80" alt="Logo">
+
+
+        <a th:href="@{/maintenanceProducts/start}" class="list-group-item list-group-item-action">
+            Gestión de Productos
+        </a>
+        <a th:href="@{/maintenanceVenta/start}" class="list-group-item list-group-item-action">
+            Gestión de Ventas
+        </a>
+        <a th:href="@{/maintenanceUsers/start}" class="list-group-item list-group-item-action">
+            Gestión de Usuarios
+        </a>
+        <a th:href="@{/maintenance/start}" class="list-group-item list-group-item-action">
+            Gestión de Categorías
+        </a>
+
+    </div>
+</div>
+
+
+</body>
+</html>
