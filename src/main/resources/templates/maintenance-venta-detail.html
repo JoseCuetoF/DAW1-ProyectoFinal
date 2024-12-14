@@ -4,35 +4,31 @@
     <meta charset="UTF-8">
     <title>Detalles de Venta</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/estilos2.css">
 </head>
-<body>
+<body class="styleBody">
 
+<div th:replace="~{fragments/dashboard :: dashboardBody}"></div>
 
-<div class="container mt-4">
+<div class="main-content">
     <div class="row">
-        <!-- Incrustar el panel administrativo -->
-        <div class="col-md-3">
-            <div th:replace="~{fragments/maintenance :: adminBody}"></div>
-        </div>
-
         <div class="col-md-9">
             <h1 class="text-center">Detalles de la Venta</h1>
 
-
-            <!--error-->
-            <div class="card mt-4">
+            <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">ID:      <span th:text="${venta.idVenta}"></span></h6>
-                    <h6 class="card-title">CLIENTE: <span th:text="${venta.nombreCliente() + ' ' + venta.apellidoCliente()}"></span></h6>
-                    <h6 class="card-text">CANTIDAD: <span th:text="${venta.cantidadProducto}"></span></h6>
-                    <h6 class="card-text">MONTO TOTAL: <span th:text="${venta.montoTotal}"></span></h6>
-                    <h6 class="card-text">CONTACTO: <span th:text="${venta.contacto}"></span></h6>
-                    <h6 class="card-text">DISTRITO: <span th:text="${venta.nombreDistrito()}"></span></h6>
-                    <h6 class="card-text">TELÉFONO: <span th:text="${venta.telefono}"></span></h6>
-                    <h6 class="card-text">DIRECCIÓN: <span th:text="${venta.direccion}"></span></h6>
-                    <h6 class="card-text">ID TRANSACCION: <span th:text="${venta.idTransaccion()}"></span></h6>
-                    <h6 class="card-text">FECHA DE VENTA: <span
-                            th:text="${#dates.format(venta.fechaVenta, 'dd/MM/yyyy')}"></span></h6>
+                    <h5 class="card-title">Información de la Venta:</h5>
+                    <p><strong>ID: </strong><span th:text="${venta.idVenta}"></span></p>
+                    <p><strong>Cliente: </strong> <span th:text="${venta.nombreCliente() + ' ' + venta.apellidoCliente()}"></span></p>
+                    <p><strong>Cantidad: </strong> <span th:text="${venta.cantidadProducto}"></span></p>
+                    <p><strong>Monto Total: </strong> <span th:text="${venta.montoTotal}"></span></p>
+                    <p><strong>Contacto: </strong> <span th:text="${venta.contacto}"></span></p>
+                    <p><strong>Distrito: </strong> <span th:text="${venta.nombreDistrito()}"></span></p>
+                    <p><strong>Teléfono: </strong> <span th:text="${venta.telefono}"></span></p>
+                    <p><strong>Dirección: </strong> <span th:text="${venta.direccion}"></span></p>
+                    <p><strong>ID Transacción: </strong> <span th:text="${venta.idTransaccion()}"></span></p>
+                    <p><strong>Fecha Venta </strong> <span
+                            th:text="${#dates.format(venta.fechaVenta, 'dd/MM/yyyy')}"></span></p>
                 </div>
             </div>
 

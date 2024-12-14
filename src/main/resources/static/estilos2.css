@@ -9,19 +9,41 @@
     display: flex;
     min-height: 100vh;
     background-color: #f5f5f5;
+
 }
+.list-group-item {
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado entre elementos */
+    border: 1px solid #ddd; /* Añade un borde para destacarlos */
+    padding: 10px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco */
+    text-align: center; /* Centrar el texto */
+}
+
+.list-group-item:hover {
+    background-color: #f0f0f0; /* Fondo más claro al pasar el mouse */
+    cursor: pointer; /* Cambia el cursor para mejorar la experiencia del usuario */
+}
+
 
 .sidebar {
     width: 20%;
-    background-color: #5d0263;
+    background-color: #29072d;
     color: #fff;
     padding: 20px;
+    margin: 15px;
+    border-radius: 15px;
+
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar img {
     display: block;
     margin: 0 auto 20px;
     width: 150px;
+    height: 150px; /* Para garantizar que sea cuadrado */
+    object-fit: cover; /* Ajusta la imagen dentro del contenedor */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
 }
 
 .sidebar h3 {
@@ -31,6 +53,7 @@
 
 .sidebar .menu {
     list-style: none;
+
 }
 
 .sidebar .menu li {
@@ -77,7 +100,7 @@
 .table-section {
     background-color: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -89,7 +112,16 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que los bordes redondeados funcionen */
 }
+
+.table-wrapper {
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que todo el contenido respete los bordes */
+    border: 1px solid #ddd; /* Para mantener el borde exterior */
+}
+
 
 table th, table td {
     border: 1px solid #ddd;
@@ -101,7 +133,6 @@ table th {
     background-color: #310033;
     color: #fff;
 }
-
 .add-button {
     margin-top: 10px;
     padding: 10px 20px;
