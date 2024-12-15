@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Ventas</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/estilos2.css">
+    <link rel="stylesheet" th:href="@{/estilos2.css}">
 </head>
 <body class="styleBody">
 
 <div th:replace="~{fragments/dashboard :: dashboardBody}"></div>
 
-<div class="main-content">
+<div class="container main-content">
     <div class="table-section">
 
-            <h3 class="text-center">Listado de Ventas</h3>
+        <h3 class="text-center">Listado de Ventas</h3>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -46,17 +46,29 @@
                         <a th:href="@{/maintenanceVenta/detailVenta/{id}(id=${venta.idVenta})}"
                            class="btn btn-info btn-sm">Detalles</a>
                     </td>
+
                     <td>
                         <!-- Botón para eliminar la venta -->
-                        <a th:href="@{/maintenanceVenta/deleteVenta/{id}(id=${venta.idVenta})}"
-                           class="btn btn-danger btn-sm"
-                           onclick="return confirm('¿Estás seguro de que deseas eliminar esta venta?')">Eliminar</a>
+                        <a href="#" class="btn btn-danger btn-sm delete-btn"
+                           th:data-id="${venta.idVenta}"
+                           th:data-url="@{/maintenanceVenta/deleteVenta/{id}(id=${venta.idVenta})}">
+                            Eliminar
+                        </a>
+
                     </td>
+
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
 </body>
 </html>
+
+<!--JS-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/modals.js"></script> <!-- Ruta de los modales -->
+

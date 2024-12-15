@@ -7,4 +7,5 @@ import java.util.List;
 public interface MaintenanceCategoriaService {
 
     List<CategoriaDto> getAllCategorias();
+    Boolean deleteCategory(int id);
 }

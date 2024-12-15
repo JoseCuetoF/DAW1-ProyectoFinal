@@ -10,7 +10,7 @@
 
 <div th:replace="~{fragments/dashboard :: dashboardBody}"></div>
 
-<div class="main-content">
+<div class="container main-content">
     <div class="row">
         <div class="col-md-9">
             <h1 class="text-center">Detalles de la Venta</h1>
@@ -32,7 +32,11 @@
                 </div>
             </div>
 
-            <a th:href="@{/maintenanceVenta/start}" class="btn btn-secondary mt-4">Volver</a>
+
+            <div class="mt-4">
+                <a href="#" th:href="@{/maintenanceVenta/start}" class="btn btn-primary">Volver al listado de ventas</a>
+            </div>
+
         </div>
     </div>
 </div>

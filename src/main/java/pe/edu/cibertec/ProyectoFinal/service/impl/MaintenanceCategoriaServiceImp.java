@@ -31,4 +31,12 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
         });
         return categorias;
     }
+
+    @Override
+    public Boolean deleteCategory(int id) {
+        return categoriaRepository.findById(id).map(categoria -> {
+            categoriaRepository.delete(categoria);
+            return true;
+        }).orElse(false);
+    }
 }
