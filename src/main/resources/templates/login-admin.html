@@ -4,35 +4,36 @@
     <meta charset="UTF-8">
     <title>Autenticación</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!--
-    <link rel="stylesheet" th:href="@{/estilos1.css}">-->
+
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
 
 </head>
 <body>
+
+
+<!-- mensaje de error en caso falle el login -->
+<div class="alert alert-danger position-absolute top-0 start-50 translate-middle-x w-60 z-3 mt-5" role="alert" th:if="${param.error}">
+    Usuario o contraseña incorrectos.
+</div>
+
+
+<!-- si el usuario ha cerrado sesión exitosamente -->
+<div class="alert alert-danger position-absolute top-0 start-50 translate-middle-x w-60 z-3 mt-5" role="alert" th:if="${param.logout}">
+    Usted ha cerrado sesión correctamente.
+</div>
+
+
+
+
+
 <div class="login-container">
+
     <!-- Left Panel -->
     <div class="left-panel text-center">
-        <!--
+        <img th:src="@{/img/LogoSPS.png}" alt="logo">
 
-        <img src="img/LogoSPS.png" alt="logo">-->
         <h1>Autenticación</h1>
-
-
-      <!--  test -->
-
     </div>
-
-    <!-- mensaje de error en caso falle el login -->
-    <div class="alert alert-danger" role="alert" th:if="${param.error}">
-        Usuario o contraseña incorrectos.
-    </div>
-
-    <!-- si el usuario ha cerrado sesison exitosamente -->
-    <div class="alert alert-warming" role="alert" th:if="${param.logout}">
-        Usted ha cerrado sesión correctamente
-    </div>
-
-
 
     <div class="right-panel">
         <form th:action="@{/manage/login}" method="post">

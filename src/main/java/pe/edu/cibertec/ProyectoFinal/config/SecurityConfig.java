@@ -22,7 +22,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         // Permitir acceso a recursos estáticos
-                        .requestMatchers("/img/", "/css/", "/js/**").permitAll()
+                        .requestMatchers("/img/**", "/css/**", "/js/**").permitAll()
                         // Permitir acceso a la página de login
                         .requestMatchers("/manage/login").permitAll()
                         // Restringir acceso a rutas específicas
