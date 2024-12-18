@@ -73,15 +73,15 @@ public class ProductoController {
         return "redirect:/maintenanceProducts/start";
     }
 
-    @GetMapping("/editProduct/{id}")
-    public String editProductForm(@PathVariable("id") int id, Model model) {
+    @GetMapping("/editProduct/{idPro}")
+    public String editProductForm(@PathVariable("idPro") int id, Model model) {
 
         List<MarcaDto> marcas = maintenanceProductoService.getAllBrands();
         List<CategoriaListDto> categorias = maintenanceProductoService.getAllCategories();
 
         ProductoDetailDto productoDetailDto = maintenanceProductoService.findProductById(id);
         if (productoDetailDto == null) {
-            return "redirect:/maintenanceUsers/start";
+            return "redirect:/maintenanceProducts/start";
         }
 
         model.addAttribute("marcas", marcas);
@@ -92,8 +92,16 @@ public class ProductoController {
 
     @PostMapping("/editProduct")
     public String editProduct(@ModelAttribute ProductoUpdateDto productoUpdateDto) {
+        System.out.println("Producto ID: " + productoUpdateDto.idPro());
         maintenanceProductoService.updateProduct(productoUpdateDto);
-        return "redirect:/maintenanceUsers/start";
+        return "redirect:/maintenanceProducts/start";
+    }
+
+    // ELIMINAR
+    @GetMapping("/deleteProduct/{id}")
+    public String deleteProduct(@PathVariable("id") int id) {
+        maintenanceProductoService.deleteProduct(id); // Llama al servicio para eliminar el producto
+        return "redirect:/maintenanceProducts/start"; // Redirige al listado después de eliminar
     }
 
 }

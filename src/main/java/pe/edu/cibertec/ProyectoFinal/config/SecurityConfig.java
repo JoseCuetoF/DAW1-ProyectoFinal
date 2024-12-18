@@ -21,8 +21,13 @@ public class SecurityConfig {
         http
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/maintenance/loginAdmin").permitAll()
+                        // Permitir acceso a recursos estáticos
+                        .requestMatchers("/img/", "/css/", "/js/**").permitAll()
+                        // Permitir acceso a la página de login
+                        .requestMatchers("/manage/login").permitAll()
+                        // Restringir acceso a rutas específicas
                         .requestMatchers("/maintenanceProducts/start").hasAnyRole("ADMIN")
+                        .requestMatchers("/maintenance/start").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 
@@ -31,23 +36,22 @@ public class SecurityConfig {
                         .accessDeniedHandler((request,
                                               response,
                                               accessDeniedException) -> {
-                            // redirigi  a pagina restricted  si no esta autorizado
-                            response.sendRedirect("/maintenanceProducts/restricted");
+                            // redirigr a pagina restricted  si no esta autorizado
+                            response.sendRedirect("/manage/restricted");
                         })
                 )
 
                 // configurar formulario de inicio de sesion
                 .formLogin(form -> form
-                        .loginPage("/maintenance/loginAdmin")
-                        .failureUrl("/maintenance/loginAdmin?error=true") // Redirige si falla el login
+                        .loginPage("/manage/login")
                         .defaultSuccessUrl("/maintenanceProducts/start", false)
                         .permitAll()
                 )
 
                 //configurar salida
                 .logout(logout-> logout
-                        .logoutUrl("/maintenanceProducts/logout")
-                        .logoutSuccessUrl("/maintenanceProducts/login?logout")
+                        .logoutUrl("/manage/logout")
+                        .logoutSuccessUrl("/manage/login?logout")
                         .permitAll()
                 );
 
@@ -60,13 +64,12 @@ public class SecurityConfig {
     }
 
 
-
     @Bean
     public UserDetailsService userDetailsService(){
 
         return username-> User.builder()
-                .username("admin")
-                .password(passwordEncoder().encode("123456"))
+                .username("Admin")
+                .password(passwordEncoder().encode("admin123"))
                 .roles("ADMIN")
                 .build();
     }

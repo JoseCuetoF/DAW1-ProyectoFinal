@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página restringida</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/estilos1.css}">
+
+</head>
+<body>
+<div class="login-container">
+    <!-- Left Panel -->
+    <div class="left-panel text-center">
+        <h1>Página restringida</h1>
+    </div>
+
+    <div class="right-panel">
+        <form th:action="@{/manage/logout}" method="post">
+
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-custom" onclick="location.href='/maintenanceProducts/start'">
+                    Ir a página principal
+                </button>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-custom">
+                    Cerrar sesión
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

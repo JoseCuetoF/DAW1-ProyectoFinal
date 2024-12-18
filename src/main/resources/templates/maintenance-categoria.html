@@ -36,11 +36,7 @@
                         </span>
                     </td>
                     <td th:text="${#dates.format(categoria.fechaRegistro, 'dd/MM/yyyy')}"></td>
-                    <td>
-                        <!-- Botón para editar categoría -->
-                        <a th:href="@{/maintenanceCategories/editCategory/{id}(id=${categoria.idCategoria})}"
-                           class="btn btn-warning btn-sm">Editar</a>
-                    </td>
+
                     <td>
                         <a th:href="@{/maintenanceCategories/detailCategory/{id}(id=${categoria.idCategoria})}"
                            class="btn btn-info btn-sm">Detalles</a>

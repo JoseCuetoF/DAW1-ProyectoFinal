@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.cibertec.ProyectoFinal.dto.UserLoginDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceUsuarioService;
 
-@Controller("/maintenance")
+@Controller
+@RequestMapping("/manage")
 public class AdminController {
 
     @Autowired
@@ -19,8 +21,8 @@ public class AdminController {
     }
 
     // Método para mostrar el formulario de login
-    @GetMapping("/loginAdmin")
-    public String loginAdmin(Model model) {
+    @GetMapping("/login")
+    public String login(Model model) {
 
         UserLoginDto userLoginDto = new UserLoginDto("","");
         model.addAttribute("userLoginDto", userLoginDto);

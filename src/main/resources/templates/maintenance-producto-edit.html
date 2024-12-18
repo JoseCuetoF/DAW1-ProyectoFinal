@@ -16,7 +16,13 @@
             <h1 class="text-center">Editar Producto</h1>
             <form id="formUpdate" th:action="@{/maintenanceProducts/editProduct}" th:object="${productoDetailDto}"
                   method="post">
+                <!---->
                 <input type="hidden" th:field="*{idPro}">
+
+                <div class="mb-3">
+                    <label for="idPro" class="form-label">idPro:</label>
+                    <input type="text" class="form-control" id="idPro" name="idPro" th:field="*{idPro}" readonly>
+                </div>
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre:</label>

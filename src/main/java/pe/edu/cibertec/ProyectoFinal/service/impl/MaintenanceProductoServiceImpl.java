@@ -73,12 +73,14 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
                     Categoria categoria = categoriaRepository.findById(productoUpdateDto.idCategoria())
                             .orElseThrow(() -> new IllegalArgumentException("categoria no valida"));
 
+                    producto.setIdPro(productoUpdateDto.idPro());
                     producto.setMarca(marca);
                     producto.setCategoria(categoria);
                     producto.setNombre(productoUpdateDto.nombre());
                     producto.setDetalles(productoUpdateDto.detalles());
                     producto.setUrlImg(productoUpdateDto.urlImg());
-                    producto.setFechaRegistro(new Date());
+                    producto.setFechaRegistro(productoUpdateDto.fechaRegistro());
+                    //producto.setFechaRegistro(new Date());
                     producto.setStock(productoUpdateDto.stock());
                     producto.setPrecio(productoUpdateDto.precio());
                     producto.setActivo(productoUpdateDto.activo());
@@ -127,6 +129,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
             return false;
         }
     }
+
     //------ADICIONAL PARA FORMULARIO
 
     @Override
