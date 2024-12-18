@@ -16,11 +16,24 @@
         <h1>LOGIN ADMINISTRATIVO</h1>
 
     </div>
+
+    <!-- mensaje de error en caso falle el login -->
+    <div class="alert alert-danger" role="alert" th:if="${param.error}">
+        Usuario o contraseña incorrectos.
+    </div>
+
+    <!-- si el usuario ha cerrado sesison exitosamente -->
+    <div class="alert alert-danger" role="alert" th:if="${param.logout}">
+        Usted ha cerrado sesión correctamente
+    </div>
+
+
+
     <div class="right-panel">
-        <form action="/loginAdminSuccessfully" method="POST">
+        <form action="/maintenance/loginAdmin" method="post">
             <div class="mb-3">
-                <label for="correo" class="form-label">Correo:</label>
-                <input type="text" class="form-control" id="correo" name="correo" placeholder="Ingresa tu correo" required>
+                <label for="username" class="form-label">Correo:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu correo" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
@@ -29,11 +42,6 @@
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-custom">Iniciar sesión</button>
             </div>
-
-            <div class="forgot-password">
-                <a href="#">¿Te olvidaste la contraseña?</a>
-            </div>
-
         </form>
     </div>
 </div>

@@ -4,16 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import pe.edu.cibertec.ProyectoFinal.dto.UserLoginDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceUsuarioService;
 
-@Controller
+@Controller("/maintenance")
 public class AdminController {
 
     @Autowired
     MaintenanceUsuarioService maintenanceUsuarioService;
+
+    @GetMapping("/restricted")
+    public String restricted (Model model) {
+        return "restricted";
+    }
 
     // Método para mostrar el formulario de login
     @GetMapping("/loginAdmin")
@@ -25,25 +28,6 @@ public class AdminController {
         return "login-admin";
 
     }
-
-    // Método para procesar el login
-    @PostMapping("/loginAdminSuccessfully")
-    public String loginAdminSuccessfully(@ModelAttribute UserLoginDto userLoginDto) {
-
-        // Validar el login usando el servicio
-        boolean loginSuccess = maintenanceUsuarioService.loginUser(userLoginDto.correo(), userLoginDto.password());
-
-        if (loginSuccess) {
-
-            return "redirect:/maintenanceUsers/start";
-
-        } else {
-
-            return "redirect:/loginAdmin?error=true";
-
-        }
-    }
-
 
     @GetMapping("/dashboard")
     public String showAdminDashboard() {
