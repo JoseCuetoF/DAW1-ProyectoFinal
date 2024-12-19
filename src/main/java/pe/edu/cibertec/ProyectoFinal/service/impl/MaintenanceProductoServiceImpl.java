@@ -50,6 +50,8 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
         Optional<Producto> optional = productoRepository.findById(id);
         return optional.map(producto -> new ProductoDetailDto(
                 producto.getIdPro(),
+                producto.getMarca().getIdMarca(),
+                producto.getMarca().getIdMarca(),
                 producto.getMarca().getNombre(),
                 producto.getCategoria().getNombre(),
                 producto.getNombre(),
@@ -63,27 +65,27 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public Boolean updateProduct(ProductoUpdateDto productoUpdateDto) {
-        Optional<Producto> optional = productoRepository.findById(productoUpdateDto.idPro());
+    public Boolean updateProduct(ProductoDetailDto productoDetailDto) {
+        Optional<Producto> optional = productoRepository.findById(productoDetailDto.idPro());
         return optional.map(
                 producto -> {
 
-                    Marca marca = marcaRepository.findById(productoUpdateDto.idMarca())
+                    Marca marca = marcaRepository.findById(productoDetailDto.idMarca())
                             .orElseThrow(() -> new IllegalArgumentException("marca no valida"));
-                    Categoria categoria = categoriaRepository.findById(productoUpdateDto.idCategoria())
+                    Categoria categoria = categoriaRepository.findById(productoDetailDto.idCategoria())
                             .orElseThrow(() -> new IllegalArgumentException("categoria no valida"));
 
-                    producto.setIdPro(productoUpdateDto.idPro());
+                    producto.setIdPro(productoDetailDto.idPro());
                     producto.setMarca(marca);
                     producto.setCategoria(categoria);
-                    producto.setNombre(productoUpdateDto.nombre());
-                    producto.setDetalles(productoUpdateDto.detalles());
-                    producto.setUrlImg(productoUpdateDto.urlImg());
-                    producto.setFechaRegistro(productoUpdateDto.fechaRegistro());
+                    producto.setNombre(productoDetailDto.nombre());
+                    producto.setDetalles(productoDetailDto.detalles());
+                    producto.setUrlImg(productoDetailDto.urlImg());
+                    producto.setFechaRegistro(new Date());
                     //producto.setFechaRegistro(new Date());
-                    producto.setStock(productoUpdateDto.stock());
-                    producto.setPrecio(productoUpdateDto.precio());
-                    producto.setActivo(productoUpdateDto.activo());
+                    producto.setStock(productoDetailDto.stock());
+                    producto.setPrecio(productoDetailDto.precio());
+                    producto.setActivo(productoDetailDto.activo());
 
                     productoRepository.save(producto);
                     return true;

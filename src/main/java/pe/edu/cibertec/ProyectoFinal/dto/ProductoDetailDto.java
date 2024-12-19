@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public record ProductoDetailDto(Integer idPro,
+                                Integer idMarca,
+                                Integer idCategoria,
                                 String nombreMarca,
                                 String nombreCategoria,
                                 String nombre,

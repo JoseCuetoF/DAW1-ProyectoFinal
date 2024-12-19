@@ -10,7 +10,7 @@ public interface MaintenanceProductoService {
 
     ProductoDetailDto findProductById(int id);
 
-    Boolean updateProduct(ProductoUpdateDto productoUpdateDto);
+    Boolean updateProduct(ProductoDetailDto productoDetailDto);
 
     Boolean deleteProduct(int id);
 

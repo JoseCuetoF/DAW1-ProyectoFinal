@@ -91,9 +91,11 @@ public class ProductoController {
     }
 
     @PostMapping("/editProduct")
-    public String editProduct(@ModelAttribute ProductoUpdateDto productoUpdateDto) {
-        System.out.println("Producto ID: " + productoUpdateDto.idPro());
-        maintenanceProductoService.updateProduct(productoUpdateDto);
+    public String editProduct(@ModelAttribute ProductoDetailDto productoDetailDto) {
+
+        System.out.println("Producto ID: " + productoDetailDto.idPro());
+
+        maintenanceProductoService.updateProduct(productoDetailDto);
         return "redirect:/maintenanceProducts/start";
     }
 

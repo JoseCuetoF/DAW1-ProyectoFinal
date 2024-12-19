@@ -14,51 +14,74 @@
     <div class="row">
         <div class="col-md-9">
             <h1 class="text-center">Editar Producto</h1>
-            <form id="formUpdate" th:action="@{/maintenanceProducts/editProduct}" th:object="${productoDetailDto}"
-                  method="post">
-                <!---->
+            <form id="formUpdateProducto" th:action="@{/maintenanceProducts/editProduct}" th:object="${productoDetailDto}" method="post">
                 <input type="hidden" th:field="*{idPro}">
 
                 <div class="mb-3">
-                    <label for="idPro" class="form-label">idPro:</label>
-                    <input type="text" class="form-control" id="idPro" name="idPro" th:field="*{idPro}" readonly>
+                    <label for="idMarca" class="form-label">Seleccione una Marca:</label>
+                    <select id="idMarca" name="idMarca" th:field="*{idMarca}" class="form-control">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option th:each="m : ${marcas}"
+                                th:value="${m.idMarca()}"
+                                th:text="${m.nombre()}">
+                        </option>
+                    </select>
                 </div>
+
+                <div class="mb-3">
+                    <label for="idCategoria" class="form-label">Seleccione una Categoría:</label>
+                    <select id="idCategoria" name="idCategoria" th:field="*{idCategoria}" class="form-control">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option th:each="c : ${categorias}"
+                                th:value="${c.idCategoria()}"
+                                th:text="${c.nombre()}">
+                        </option>
+                    </select>
+                </div>
+                <!---->
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}" required>
                 </div>
-
-
+                <div class="mb-3">
+                    <label for="detalles" class="form-label">Detalles:</label>
+                    <textarea class="form-control" id="detalles" name="detalles" th:field="*{detalles}" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="urlImg" class="form-label">URL de Imagen:</label>
+                    <input type="text" class="form-control" id="urlImg" name="urlImg" th:field="*{urlImg}">
+                </div>
+                <div class="mb-3">
+                    <label for="fechaRegistro" class="form-label">Fecha de Actualización:</label>
+                    <input type="date" class="form-control" id="fechaRegistro" name="fechaRegistro" th:field="*{fechaRegistro}" readonly>
+                </div>
                 <div class="mb-3">
                     <label for="stock" class="form-label">Stock:</label>
                     <input type="number" class="form-control" id="stock" name="stock" th:field="*{stock}" required>
                 </div>
-
                 <div class="mb-3">
                     <label for="precio" class="form-label">Precio:</label>
-                    <input type="number" class="form-control" id="precio" name="precio" th:field="*{precio}" required>
+                    <input type="number" class="form-control" id="precio" name="precio" th:field="*{precio}" step="0.01" required>
                 </div>
-
                 <div class="mb-3">
-                    <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
-                    <input type="date" class="form-control" id="fechaCreacion" name="fechaCreacion"
-                           th:field="*{fechaRegistro}" required>
+                    <label for="activo" class="form-label">Activo:</label>
+                    <select class="form-control" id="activo" name="activo" th:field="*{activo}" required>
+                        <option value="1" th:selected="*{activo == 1}">Sí</option>
+                        <option value="0" th:selected="*{activo == 0}">No</option>
+                    </select>
                 </div>
-
-                <button type="button" id="btnUpdate" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" id="btnUpdateProducto" class="btn btn-primary">Guardar Cambios</button>
                 <a th:href="@{/maintenanceProducts/start}" class="btn btn-secondary">Regresar</a>
             </form>
         </div>
     </div>
 </div>
+
 </body>
 </html>
 
-
 <!--JS-->
-
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/modals.js"></script> <!-- Ruta de los modales -->
-
