@@ -14,7 +14,7 @@
 <div class="container main-content">
     <div class="table-section">
         <h1 class="text-center">Listado de Categorías</h1>
-        <a th:href="@{/maintenanceCategories/addCategory}" class="btn btn-success btn-sm mb-3">Agregar Categoría</a>
+        <a class="btn btn-success btn-sm mb-3" id="addCategoryBtn">Agregar Categoría</a>
         <div class="table-wrapper">
             <table>
                 <thead>
@@ -23,7 +23,7 @@
                     <th>Nombre</th>
                     <th>Activo</th>
                     <th>Fecha de Registro</th>
-                    <th colspan="3">Acciones</th>
+                    <th colspan="1">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,11 +36,6 @@
                         </span>
                     </td>
                     <td th:text="${#dates.format(categoria.fechaRegistro, 'dd/MM/yyyy')}"></td>
-
-                    <td>
-                        <a th:href="@{/maintenanceCategories/detailCategory/{id}(id=${categoria.idCategoria})}"
-                           class="btn btn-info btn-sm">Detalles</a>
-                    </td>
 
                     <td>
                         <!-- Botón para eliminar la categoria -->
@@ -57,10 +52,14 @@
         </div>
     </div>
 </div>
+
 </body>
+
 </html>
+
+
 
 <!--JS-->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="/js/modals.js"></script> <!-- Ruta de los modales -->
+<script src="/js/modals.js"></script>  <!--Ruta de los modales -->

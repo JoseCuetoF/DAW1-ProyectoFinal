@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pe.edu.cibertec.ProyectoFinal.dto.CategoriaDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceCategoriaService;
@@ -36,5 +37,16 @@ public class MaintenanceCategoriaController {
         return "redirect:/maintenance/start";
     }
 
+    //AGREGAR
+    @PostMapping("/addCategory")
+    public String addCategory(CategoriaDto categoriaDto, Model model) {
+        boolean isAdded = maintenanceCategoriaService.addCategory(categoriaDto);
+        if (isAdded) {
+            model.addAttribute("successMessage", "Categoría añadida exitosamente.");
+        } else {
+            model.addAttribute("errorMessage", "Error al añadir la categoría.");
+        }
+        return "redirect:/maintenance/start";
+    }
 
 }

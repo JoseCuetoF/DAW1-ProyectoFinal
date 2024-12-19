@@ -23,7 +23,7 @@ public class Categoria {
     private Date fechaRegistro;
 
     //bi-directional many-to-one association to Producto
-    @OneToMany(mappedBy="categoria")
+    @OneToMany(mappedBy="categoria", cascade = CascadeType.REMOVE)
     private List<Producto> productos;
 
 

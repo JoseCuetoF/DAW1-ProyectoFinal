@@ -10,7 +10,6 @@ import java.util.List;
 
 
 @Entity
-@Table(name="marca")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

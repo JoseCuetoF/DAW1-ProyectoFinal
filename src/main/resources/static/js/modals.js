@@ -1,4 +1,3 @@
-
 /**
  * MODAL PARA EL BOTON ACTUALIZAR
  * */
@@ -58,5 +57,35 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
+    });
+});
+
+/**
+ * Modal para el botón agregar categoria
+ * */
+    document.getElementById('addCategoryBtn').addEventListener('click', function () {
+    Swal.fire({
+        title: 'Nueva Categoría',
+        html: `
+                <form id="addCategoryForm" action="/maintenance/addCategory" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="activo">Activo:</label>
+                        <select class="form-control" id="activo" name="activo" required>
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                </form>
+            `,
+        showCancelButton: true,
+        confirmButtonText: 'Guardar',
+        preConfirm: () => {
+            const form = document.getElementById('addCategoryForm');
+            form.submit(); // Envía el formulario
+        }
     });
 });

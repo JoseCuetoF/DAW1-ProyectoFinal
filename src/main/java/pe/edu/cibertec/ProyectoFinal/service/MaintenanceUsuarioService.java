@@ -1,6 +1,5 @@
 package pe.edu.cibertec.ProyectoFinal.service;
 
-import pe.edu.cibertec.ProyectoFinal.dto.UserLoginDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioCreateDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDetailDto;
 import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDto;
@@ -18,8 +17,5 @@ public interface MaintenanceUsuarioService {
     Boolean deleteUser(int id);
 
     Boolean insertUser(UsuarioCreateDto usuarioCreateDto);
-
-    //LOGUEO
-    Boolean loginUser(String email, String password);
 
 }

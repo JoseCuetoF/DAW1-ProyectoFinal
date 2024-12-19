@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pe.edu.cibertec.ProyectoFinal.dto.CategoriaDto;
 import pe.edu.cibertec.ProyectoFinal.entity.Categoria;
+import pe.edu.cibertec.ProyectoFinal.entity.Usuario;
 import pe.edu.cibertec.ProyectoFinal.repository.CategoriaRepository;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceCategoriaService;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaService {
@@ -38,5 +41,23 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
             categoriaRepository.delete(categoria);
             return true;
         }).orElse(false);
+    }
+
+    @Override
+    public Boolean addCategory(CategoriaDto categoriaDto) {
+
+        try {
+            Categoria categoria = new Categoria();
+            categoria.setNombre(categoriaDto.nombre());
+            categoria.setActivo(categoriaDto.activo());
+            categoria.setFechaRegistro(new Date());
+
+            categoriaRepository.save(categoria);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
