@@ -5,13 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.ProyectoFinal.dto.CategoriaDto;
 import pe.edu.cibertec.ProyectoFinal.service.MaintenanceCategoriaService;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -32,20 +30,30 @@ public class MaintenanceCategoriaController {
 
     //Eliminar
     @GetMapping("/deleteCategory/{id}")
-    public String deleteVenta(@PathVariable("id") int id) {
+    public String deleteCategory(@PathVariable("id") int id) {
         maintenanceCategoriaService.deleteCategory(id);
         return "redirect:/maintenance/start";
     }
 
+
+    @GetMapping("/addCategory")
+    public String addCategory(Model model) {
+       CategoriaDto categoriaDto = new CategoriaDto(
+                null,
+                        "",
+                        1,
+                        new Date());
+
+        model.addAttribute("categoriaDto", categoriaDto);
+        return "maintenance-categoria-add";
+    }
+
     //AGREGAR
-    @PostMapping("/addCategory")
-    public String addCategory(CategoriaDto categoriaDto, Model model) {
-        boolean isAdded = maintenanceCategoriaService.addCategory(categoriaDto);
-        if (isAdded) {
-            model.addAttribute("successMessage", "Categoría añadida exitosamente.");
-        } else {
-            model.addAttribute("errorMessage", "Error al añadir la categoría.");
-        }
+    @PostMapping("/addCategoryConfirm")
+    public String addCategory(@ModelAttribute  CategoriaDto categoriaDto) {
+
+        maintenanceCategoriaService.addCategory(categoriaDto);
+
         return "redirect:/maintenance/start";
     }
 

@@ -23,7 +23,11 @@ public class ProductoController {
     @GetMapping("/start")
     public String start(Model model) {
 
+
+
+
         List<ProductoDto> products = maintenanceProductoService.findAllProducts();
+
         model.addAttribute("products", products);
         return "maintenance-products";
 

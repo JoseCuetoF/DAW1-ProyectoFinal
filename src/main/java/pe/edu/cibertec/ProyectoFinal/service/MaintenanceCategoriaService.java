@@ -8,6 +8,5 @@ public interface MaintenanceCategoriaService {
 
     List<CategoriaDto> getAllCategorias();
     Boolean deleteCategory(int id);
-
     Boolean addCategory(CategoriaDto categoriaDto);
 }

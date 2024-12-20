@@ -28,6 +28,7 @@ public class SecurityConfig {
                         // Restringir acceso a rutas específicas
                         .requestMatchers("/maintenanceProducts/start").hasAnyRole("ADMIN")
                         .requestMatchers("/maintenance/start").hasAnyRole("ADMIN")
+                        .requestMatchers("/maintenance/addCategory", "/maintenance/addCategoryConfirm").hasAnyRole("ADMIN")
                         .anyRequest().authenticated()
                 )
 
