@@ -24,7 +24,7 @@ public class Marca {
     private Date fechaRegistro;
 
     //bi-directional many-to-one association to Producto
-    @OneToMany(mappedBy="marca")
+    @OneToMany(mappedBy="marca", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Producto> productos;
 
 }

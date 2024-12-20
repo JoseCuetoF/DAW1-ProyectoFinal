@@ -26,11 +26,11 @@ public class Cliente {
     private Date fechaRegistro;
 
     //bi-directional many-to-one association to Carrito
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="cliente", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Carrito> carritos;
 
     //bi-directional many-to-one association to Venta
-    @OneToMany(mappedBy="cliente")
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.MERGE)
     private List<Venta> ventas;
 
 

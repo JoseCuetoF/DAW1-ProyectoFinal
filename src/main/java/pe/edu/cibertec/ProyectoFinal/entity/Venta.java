@@ -32,7 +32,7 @@ public class Venta {
     private Cliente cliente;
 
     //bi-directional many-to-one association to Detalleventa
-    @OneToMany(mappedBy="venta")
+    @OneToMany(mappedBy="venta", cascade = CascadeType.REMOVE)
     private List<DetalleVenta> detalleventas;
 
     //bi-directional many-to-one association to Distrito

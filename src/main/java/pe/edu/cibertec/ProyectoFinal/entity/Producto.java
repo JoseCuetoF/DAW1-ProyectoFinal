@@ -43,7 +43,7 @@ public class Producto {
     private List<DetalleVenta> detalleVentas;
 
     //bi-directional many-to-one association to Carrito
-    @OneToMany(mappedBy="producto")
+    @OneToMany(mappedBy="producto", cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Carrito> carritos;
 
 }
