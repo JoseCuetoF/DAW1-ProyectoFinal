@@ -2,6 +2,7 @@ package pe.edu.cibertec.ProyectoFinal.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import pe.edu.cibertec.ProyectoFinal.dto.UserLoginDto;
+import pe.edu.cibertec.ProyectoFinal.dto.UsuarioDto;
 import pe.edu.cibertec.ProyectoFinal.entity.Usuario;
 
 import java.util.Optional;

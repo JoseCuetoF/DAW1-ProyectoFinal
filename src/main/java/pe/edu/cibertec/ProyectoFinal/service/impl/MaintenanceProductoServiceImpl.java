@@ -38,7 +38,8 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
                 producto.getCategoria().getNombre(),
                 producto.getNombre(),
                 producto.getStock(),
-                producto.getPrecio()
+                producto.getPrecio(),
+                producto.getUrlImg()
             );
             products.add(productoDto);
         });
@@ -154,5 +155,24 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
             categorias.add(categoriaListDto);
         });
         return categorias;
+    }
+
+    @Override
+    public List<ProductoTiendaDto> listProducts() {
+        List<ProductoTiendaDto> products = new ArrayList<ProductoTiendaDto>();
+        Iterable<Producto> iterable = productoRepository.findAll();
+        iterable.forEach(producto -> {
+            ProductoTiendaDto productoTiendaDto = new ProductoTiendaDto(
+                    producto.getIdPro(),
+                    producto.getUrlImg(),
+                    producto.getMarca().getNombre(),
+                    producto.getCategoria().getNombre(),
+                    producto.getNombre(),
+                    producto.getStock(),
+                    producto.getPrecio()
+            );
+            products.add(productoTiendaDto);
+        });
+        return products;
     }
 }

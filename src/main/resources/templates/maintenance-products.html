@@ -17,7 +17,8 @@
     <div class="table-section">
         <h1 class="text-center">Gestion de productos</h1>
         <!-- Botón para agregar un nuevo usuario -->
-        <a th:href="@{/maintenanceProducts/addProduct}" class="btn btn-success btn-sm mb-3">Agregar Producto</a>
+        <a th:href="@{/maintenanceProducts/addProduct}" class="btn btn-success btn-sm mb-2">Agregar Producto</a>
+
         <!-- Tabla para mostrar los usuarios -->
         <div class="table-wrapper">
             <table>
@@ -29,6 +30,7 @@
                     <th>Categoría</th>
                     <th>Stock</th>
                     <th>Precio</th>
+                    <th>Imagen</th>
                     <th colspan="3">Acciones</th>
                 </tr>
                 </thead>
@@ -40,6 +42,11 @@
                     <td th:text="${product.categoria}"></td>
                     <td th:text="${product.stock}"></td>
                     <td th:text="${product.precio}"></td>
+                    <td>
+                        <img th:src="@{'/img/products/' + ${product.idPro()} + '.png'}"
+                             class="d-block mx-auto img-fluid" alt="Imagen del producto"
+                             style="max-height: 100px; object-fit: cover;"><br>
+                    </td>
 
                     <td>
                         <a th:href="@{/maintenanceProducts/editProduct/{id}(id=${product.idPro})}"
@@ -69,10 +76,13 @@
 
 </div>
 </body>
-</html>
+
 
 <!--JS-->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/js/modals.js"></script> <!-- Ruta de los modales -->
+
+</html>
+
 

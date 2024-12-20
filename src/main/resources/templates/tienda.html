@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Productos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/estilos2.css}">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7 mt-3 mb-2">
+            <h2>Productos que ofrecemos en ~Spring PetShop~</h2>
+        </div>
+
+        <div class="col-md-3 d-flex justify-content-between align-items-center">
+
+            <button class="btn btn-primary me-3" onclick="location.href='/tienda/carrito'">Ver carrito</button>
+
+            <!--Form para boton logout-->
+            <form th:action="@{/manage/logout}" method="post">
+                <!--Boton logout-->
+                <button type="submit" class="btn btn-danger">Cerrar la sesion</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4" th:each="producto : ${products}">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header d-flex justify-content-center align-items-center">
+                    <h5 class="card-title" th:text="${producto.nombre()}" th:attr="data-id=${producto.idPro()}">Nombre
+                        del producto</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <!-- Concatenar la URL de la imagen correctamente -->
+                        <img th:src="@{'/img/products/' + ${producto.idPro()} + '.png'}"
+                             class="d-block mx-auto img-fluid" alt="Imagen del producto"
+                             style="max-height: 200px; object-fit: cover;"><br>
+                        <strong>ID:</strong>
+                        <span class="id" th:text="${producto.idPro()}"
+                                         th:attr="data-id=${producto.idPro()}">
+                        </span><br>
+                        <strong>Nombre del producto:</strong> <span th:text="${producto.nombre()}"></span><br>
+                        <strong>Precio:</strong> S/ <span class="precio" th:text="${producto.precio()}"
+                                                          th:attr="data-id=${producto.idPro()}"></span><br>
+                        <strong>Stock:</strong> <span class="stock" th:text="${producto.stock()}"
+                                                      th:attr="data-id=${producto.idPro()}"></span><br>
+                    </p>
+                </div>
+                <div class="card-footer bg-light d-flex justify-content-center">
+                    <button type="button" class="btn btn-outline-primary fw-bold add-to-cart"
+                            th:data-id="${producto.idPro()}"
+                            th:data-nombre="${producto.nombre()}"
+                            th:data-precio="${producto.precio()}">
+                        Añadir al carrito
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

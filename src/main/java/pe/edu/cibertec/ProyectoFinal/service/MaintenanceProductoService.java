@@ -19,4 +19,12 @@ public interface MaintenanceProductoService {
     //------------
     List<MarcaDto> getAllBrands();
     List<CategoriaListDto> getAllCategories();
+
+
+    // ---------para tienda
+
+
+    //Tienda
+    List<ProductoTiendaDto> listProducts();
+
 }

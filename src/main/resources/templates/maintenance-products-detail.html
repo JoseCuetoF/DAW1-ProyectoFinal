@@ -25,7 +25,9 @@
                     <p><strong>Nombre:</strong> <span th:text="${productoDetailDto.nombre}"></span></p>
                     <p><strong>Detalles:</strong> <span th:text="${productoDetailDto.detalles}"></span></p>
                     <p><strong>Imagen:</strong></p>
-                    <img th:src="${productoDetailDto.urlImg}" alt="Imagen del Producto" class="img-fluid mb-3">
+                    <img th:src="@{'/img/products/' + ${productoDetailDto.idPro()} + '.png'}"
+                         class="d-block mx-auto img-fluid" alt="Imagen del producto"
+                         style="max-height: 150px;"><br>
                     <p><strong>Fecha de Registro:</strong>
                         <span th:text="${#dates.format(productoDetailDto.fechaRegistro, 'dd/MM/yyyy')}"></span>
                     </p>

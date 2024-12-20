@@ -18,4 +18,5 @@ public interface MaintenanceVentaService {
 
     // adicional
     List<DistritoDto> findAllDistritos();
+
 }

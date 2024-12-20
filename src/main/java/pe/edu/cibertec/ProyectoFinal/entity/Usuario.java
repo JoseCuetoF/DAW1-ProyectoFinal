@@ -24,4 +24,5 @@ public class Usuario {
     private String password;
     private Date fechaRegistro;
 
+    private String rol;
 }
