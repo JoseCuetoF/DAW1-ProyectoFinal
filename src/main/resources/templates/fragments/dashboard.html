@@ -3,6 +3,8 @@
 <head th:fragment="dashboardHead">
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/estilos2.css">
 </head>
 <body th:fragment="dashboardBody">
@@ -12,7 +14,7 @@
 
     <div class="list-group mt-4">
 
-        <h5 class="text-center">Bienvenido Admin</h5>
+        <h5 class="text-center"><strong>Bienvenido Admin</strong></h5>
 
         <img src="/img/mau.png" alt="Logo">
 
@@ -38,7 +40,7 @@
             <!--Boton logout-->
             <br>
             <br>
-            <button type="submit" class="btn btn-danger">Cerrar la sesion</button>
+            <button type="submit" class="btn btn-danger"><i class="bi bi-box-arrow-left"></i> Cerrar la sesion</button>
         </form>
 
     </div>
