@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface MaintenanceVentaService {
 
-    List<VentaDto> findAllVentas();
+    List<VentaDto> findAllVentas()throws Exception ;
 
-    VentaDetailDto findVentaById(int id);
+    VentaDetailDto findVentaById(int id)throws Exception ;
 
-    Boolean updateVenta(VentaDetailDto ventaDetailDto);
+    Boolean updateVenta(VentaDetailDto ventaDetailDto)throws Exception ;
 
-    Boolean deleteVenta(int id);
+    Boolean deleteVenta(int id)throws Exception ;
 
     // adicional
-    List<DistritoDto> findAllDistritos();
+    List<DistritoDto> findAllDistritos()throws Exception ;
 
 }

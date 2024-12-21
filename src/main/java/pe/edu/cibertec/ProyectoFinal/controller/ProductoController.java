@@ -21,7 +21,7 @@ public class ProductoController {
 
     //Listado
     @GetMapping("/start")
-    public String start(Model model) {
+    public String start(Model model) throws Exception {
 
         List<ProductoDto> products = maintenanceProductoService.findAllProducts();
 
@@ -32,7 +32,7 @@ public class ProductoController {
 
     // DETALLES
     @GetMapping("/detailUser/{id}")
-    public String detailProduct(@PathVariable Integer id, Model model){
+    public String detailProduct(@PathVariable Integer id, Model model)throws Exception {
 
         ProductoDetailDto productoDetailDto = maintenanceProductoService.findProductById(id);
         model.addAttribute("productoDetailDto", productoDetailDto);
@@ -41,7 +41,7 @@ public class ProductoController {
 
         //AGREGAR
         @GetMapping("/addProduct")
-        public String addProduct(Model model) {
+        public String addProduct(Model model)throws Exception  {
 
             List<MarcaDto> marcas = maintenanceProductoService.getAllBrands();
             List<CategoriaListDto> categorias = maintenanceProductoService.getAllCategories();
@@ -68,14 +68,14 @@ public class ProductoController {
         }
 
     @PostMapping("/addProductConfirm")
-    public String addProductConfirm(@ModelAttribute ProductoCreateDto productoCreateDto) {
+    public String addProductConfirm(@ModelAttribute ProductoCreateDto productoCreateDto) throws Exception {
 
         maintenanceProductoService.insertProduct(productoCreateDto);
         return "redirect:/maintenanceProducts/start";
     }
 
     @GetMapping("/editProduct/{idPro}")
-    public String editProductForm(@PathVariable("idPro") int id, Model model) {
+    public String editProductForm(@PathVariable("idPro") int id, Model model) throws Exception {
 
         List<MarcaDto> marcas = maintenanceProductoService.getAllBrands();
         List<CategoriaListDto> categorias = maintenanceProductoService.getAllCategories();
@@ -92,7 +92,7 @@ public class ProductoController {
     }
 
     @PostMapping("/editProduct")
-    public String editProduct(@ModelAttribute ProductoDetailDto productoDetailDto) {
+    public String editProduct(@ModelAttribute ProductoDetailDto productoDetailDto)throws Exception  {
 
         System.out.println("Producto ID: " + productoDetailDto.idPro());
 
@@ -102,7 +102,7 @@ public class ProductoController {
 
     // ELIMINAR
     @GetMapping("/deleteProduct/{id}")
-    public String deleteProduct(@PathVariable("id") int id) {
+    public String deleteProduct(@PathVariable("id") int id) throws Exception {
         maintenanceProductoService.deleteProduct(id); // Llama al servicio para eliminar el producto
         return "redirect:/maintenanceProducts/start"; // Redirige al listado después de eliminar
     }

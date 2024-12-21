@@ -18,7 +18,7 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     UsuarioRepository userRepository;
 
     @Override
-    public List<UsuarioDto> findAllUsers() {
+    public List<UsuarioDto> findAllUsers() throws Exception {
         List<UsuarioDto> users = new ArrayList<UsuarioDto>();
         Iterable<Usuario> iterable = userRepository.findAll();
         iterable.forEach(user -> {
@@ -34,7 +34,7 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     }
 
     @Override
-    public UsuarioDetailDto findUserById(int id) {
+    public UsuarioDetailDto findUserById(int id)throws Exception  {
         Optional<Usuario> optional = userRepository.findById(id);
         return optional.map(user -> new UsuarioDetailDto(
                 user.getIdUsuario(),
@@ -46,7 +46,7 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     }
 
     @Override
-    public Boolean updateUser(UsuarioDto usuarioDto) {
+    public Boolean updateUser(UsuarioDto usuarioDto)throws Exception  {
         Optional<Usuario> optional = userRepository.findById(usuarioDto.idUsuario());
         return optional.map(
                 user -> {
@@ -62,7 +62,7 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     }
 
     @Override
-    public Boolean deleteUser(int id) {
+    public Boolean deleteUser(int id) throws Exception {
         return userRepository.findById(id).map(user -> {
             userRepository.delete(user);
             return true;
@@ -70,7 +70,7 @@ public class MaintenanceUsuarioServiceImpl implements MaintenanceUsuarioService 
     }
 
     @Override
-    public Boolean insertUser(UsuarioCreateDto usuarioCreateDto) {
+    public Boolean insertUser(UsuarioCreateDto usuarioCreateDto)throws Exception  {
 
         try {
             Usuario user = new Usuario();

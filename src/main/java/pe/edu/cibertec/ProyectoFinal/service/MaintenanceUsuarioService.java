@@ -8,15 +8,15 @@ import java.util.List;
 
 public interface MaintenanceUsuarioService {
 
-    List<UsuarioDto> findAllUsers();
+    List<UsuarioDto> findAllUsers()throws Exception ;
 
-    UsuarioDetailDto findUserById(int id);
+    UsuarioDetailDto findUserById(int id)throws Exception ;
 
-    Boolean updateUser(UsuarioDto usuarioDto);
+    Boolean updateUser(UsuarioDto usuarioDto)throws Exception ;
 
-    Boolean deleteUser(int id);
+    Boolean deleteUser(int id)throws Exception ;
 
-    Boolean insertUser(UsuarioCreateDto usuarioCreateDto);
+    Boolean insertUser(UsuarioCreateDto usuarioCreateDto)throws Exception ;
 
 
 }

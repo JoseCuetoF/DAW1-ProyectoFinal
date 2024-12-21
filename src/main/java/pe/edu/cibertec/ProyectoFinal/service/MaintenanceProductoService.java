@@ -6,25 +6,25 @@ import java.util.List;
 
 public interface MaintenanceProductoService {
 
-    List<ProductoDto> findAllProducts();
+    List<ProductoDto> findAllProducts()throws Exception ;
 
-    ProductoDetailDto findProductById(int id);
+    ProductoDetailDto findProductById(int id)throws Exception ;
 
-    Boolean updateProduct(ProductoDetailDto productoDetailDto);
+    Boolean updateProduct(ProductoDetailDto productoDetailDto)throws Exception ;
 
-    Boolean deleteProduct(int id);
+    Boolean deleteProduct(int id)throws Exception ;
 
-    Boolean insertProduct(ProductoCreateDto productoCreateDto);
+    Boolean insertProduct(ProductoCreateDto productoCreateDto)throws Exception ;
 
     //------------
-    List<MarcaDto> getAllBrands();
-    List<CategoriaListDto> getAllCategories();
+    List<MarcaDto> getAllBrands()throws Exception ;
+    List<CategoriaListDto> getAllCategories()throws Exception ;
 
 
     // ---------para tienda
 
 
     //Tienda
-    List<ProductoTiendaDto> listProducts();
+    List<ProductoTiendaDto> listProducts() ;
 
 }

@@ -21,7 +21,7 @@ public class MaintenanceCategoriaController {
     MaintenanceCategoriaService maintenanceCategoriaService;
 
     @GetMapping("/start")
-    public String star(Model model) {
+    public String star(Model model)throws Exception  {
         List<CategoriaDto> categorias = maintenanceCategoriaService.getAllCategorias();
         model.addAttribute("categorias", categorias);
         return "maintenance-categoria";
@@ -30,14 +30,14 @@ public class MaintenanceCategoriaController {
 
     //Eliminar
     @GetMapping("/deleteCategory/{id}")
-    public String deleteCategory(@PathVariable("id") int id) {
+    public String deleteCategory(@PathVariable("id") int id)throws Exception  {
         maintenanceCategoriaService.deleteCategory(id);
         return "redirect:/maintenance/start";
     }
 
 
     @GetMapping("/addCategory")
-    public String addCategory(Model model) {
+    public String addCategory(Model model) throws Exception {
        CategoriaDto categoriaDto = new CategoriaDto(
                 null,
                         "",
@@ -50,7 +50,7 @@ public class MaintenanceCategoriaController {
 
     //AGREGAR
     @PostMapping("/addCategoryConfirm")
-    public String addCategory(@ModelAttribute  CategoriaDto categoriaDto) {
+    public String addCategory(@ModelAttribute  CategoriaDto categoriaDto) throws Exception  {
 
         maintenanceCategoriaService.addCategory(categoriaDto);
 

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface MaintenanceDistritoService {
 
-    List<DistritoDto> getAllDistrito();
+    List<DistritoDto> getAllDistrito() throws Exception;
 }

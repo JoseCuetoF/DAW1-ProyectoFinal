@@ -21,7 +21,7 @@ public class MaintenanceVentaController {
 
     // Lista
     @GetMapping("/start")
-    public String start(Model model) {
+    public String start(Model model) throws Exception {
         List<VentaDto> ventas =maintenanceVentaService.findAllVentas();
 
         model.addAttribute("ventas",ventas);
@@ -31,7 +31,7 @@ public class MaintenanceVentaController {
     //Detalles
 
     @GetMapping("/detailVenta/{id}")
-    public String detailVenta(@PathVariable Integer id, Model model) {
+    public String detailVenta(@PathVariable Integer id, Model model) throws Exception  {
         VentaDetailDto ventaDetailDto = maintenanceVentaService.findVentaById(id);
         model.addAttribute("venta",ventaDetailDto);
         return "maintenance-venta-detail";
@@ -40,7 +40,7 @@ public class MaintenanceVentaController {
     //Editar
 
     @GetMapping("/editVenta/{id}")
-    public String editVenta(@PathVariable("id") int id, Model model) {
+    public String editVenta(@PathVariable("id") int id, Model model) throws Exception {
 
         List<DistritoDto> distritos = maintenanceVentaService.findAllDistritos();
 
@@ -60,14 +60,14 @@ public class MaintenanceVentaController {
     }
 
     @PostMapping("/editVenta")
-    public String editVenta(@ModelAttribute VentaDetailDto ventaDetailDto) {
+    public String editVenta(@ModelAttribute VentaDetailDto ventaDetailDto)throws Exception  {
         maintenanceVentaService.updateVenta(ventaDetailDto);
         return "redirect:/maintenanceVenta/start";
     }
 
     //Eliminar
     @GetMapping("/deleteVenta/{id}")
-    public String deleteVenta(@PathVariable("id") int id) {
+    public String deleteVenta(@PathVariable("id") int id)throws Exception  {
         maintenanceVentaService.deleteVenta(id);
         return "redirect:/maintenanceVenta/start";
     }

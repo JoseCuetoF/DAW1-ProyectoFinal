@@ -28,7 +28,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
 
 
     @Override
-    public List<ProductoDto> findAllProducts() {
+    public List<ProductoDto> findAllProducts()throws Exception  {
         List<ProductoDto> products = new ArrayList<ProductoDto>();
         Iterable<Producto> iterable = productoRepository.findAll();
         iterable.forEach(producto -> {
@@ -47,7 +47,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public ProductoDetailDto findProductById(int id) {
+    public ProductoDetailDto findProductById(int id)throws Exception  {
         Optional<Producto> optional = productoRepository.findById(id);
         return optional.map(producto -> new ProductoDetailDto(
                 producto.getIdPro(),
@@ -66,7 +66,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public Boolean updateProduct(ProductoDetailDto productoDetailDto) {
+    public Boolean updateProduct(ProductoDetailDto productoDetailDto) throws Exception  {
         Optional<Producto> optional = productoRepository.findById(productoDetailDto.idPro());
         return optional.map(
                 producto -> {
@@ -96,7 +96,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public Boolean deleteProduct(int id) {
+    public Boolean deleteProduct(int id)throws Exception  {
         return productoRepository.findById(id).map(producto -> {
             productoRepository.delete(producto);
             return true;
@@ -104,7 +104,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public Boolean insertProduct(ProductoCreateDto productoCreateDto) {
+    public Boolean insertProduct(ProductoCreateDto productoCreateDto)throws Exception  {
         try {
 
             Producto producto = new Producto();
@@ -136,7 +136,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     //------ADICIONAL PARA FORMULARIO
 
     @Override
-    public List<MarcaDto> getAllBrands() {
+    public List<MarcaDto> getAllBrands() throws Exception {
         List<MarcaDto> marcas = new ArrayList<MarcaDto>();
         Iterable<Marca> iterable = marcaRepository.findAll();
         iterable.forEach( marca -> {
@@ -147,7 +147,7 @@ public class MaintenanceProductoServiceImpl implements MaintenanceProductoServic
     }
 
     @Override
-    public List<CategoriaListDto> getAllCategories() {
+    public List<CategoriaListDto> getAllCategories() throws Exception  {
         List<CategoriaListDto> categorias = new ArrayList<CategoriaListDto>();
         Iterable<Categoria> iterable = categoriaRepository.findAll();
         iterable.forEach( categoria -> {

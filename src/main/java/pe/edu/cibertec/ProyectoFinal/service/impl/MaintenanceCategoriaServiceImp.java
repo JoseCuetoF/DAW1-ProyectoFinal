@@ -20,7 +20,7 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
     CategoriaRepository categoriaRepository;
 
     @Override
-    public List<CategoriaDto> getAllCategorias() {
+    public List<CategoriaDto> getAllCategorias() throws Exception {
 
         List<CategoriaDto> categorias = new ArrayList<CategoriaDto>();
         Iterable<Categoria> iterable = categoriaRepository.findAll();
@@ -36,7 +36,7 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
     }
 
     @Override
-    public Boolean deleteCategory(int id) {
+    public Boolean deleteCategory(int id) throws Exception {
         return categoriaRepository.findById(id).map(categoria -> {
             categoriaRepository.delete(categoria);
             return true;
@@ -44,7 +44,7 @@ public class MaintenanceCategoriaServiceImp implements MaintenanceCategoriaServi
     }
 
     @Override
-    public Boolean addCategory(CategoriaDto categoriaDto) {
+    public Boolean addCategory(CategoriaDto categoriaDto) throws Exception {
 
         try {
             Categoria categoria = new Categoria();

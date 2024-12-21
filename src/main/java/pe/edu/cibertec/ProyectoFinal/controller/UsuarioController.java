@@ -20,7 +20,7 @@ public class UsuarioController {
     MaintenanceUsuarioService maintenanceUsuarioService;
 
     @GetMapping("/start")
-    public String start(Model model) {
+    public String start(Model model) throws Exception {
 
         List<UsuarioDto> users = maintenanceUsuarioService.findAllUsers();
         model.addAttribute("users", users);
@@ -29,7 +29,7 @@ public class UsuarioController {
 
     // DETALLES
     @GetMapping("/detailUser/{id}")
-    public String detailUser(@PathVariable Integer id, Model model){
+    public String detailUser(@PathVariable Integer id, Model model)throws Exception {
 
         UsuarioDetailDto usuarioDetailDto = maintenanceUsuarioService.findUserById(id);
         model.addAttribute("usuarioDetailDto", usuarioDetailDto);
@@ -38,7 +38,7 @@ public class UsuarioController {
 
     //AGREGAR
     @GetMapping("/addUser")
-    public String addUser(Model model) {
+    public String addUser(Model model) throws Exception {
         UsuarioCreateDto usuarioCreateDto = new UsuarioCreateDto(
                 "",
                 "",
@@ -51,13 +51,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/addUserConfirm")
-    public String addUserConfirm(@ModelAttribute UsuarioCreateDto usuarioCreateDto) {
+    public String addUserConfirm(@ModelAttribute UsuarioCreateDto usuarioCreateDto) throws Exception {
         maintenanceUsuarioService.insertUser(usuarioCreateDto);
         return "redirect:/maintenanceUsers/start";
     }
 
     @GetMapping("/editUser/{id}")
-    public String editUserForm(@PathVariable("id") int id, Model model) {
+    public String editUserForm(@PathVariable("id") int id, Model model)throws Exception  {
         UsuarioDetailDto usuarioDetailDto = maintenanceUsuarioService.findUserById(id);
         if (usuarioDetailDto == null) {
             return "redirect:/maintenanceUsers/start";
@@ -67,13 +67,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/editUser")
-    public String editUser(@ModelAttribute UsuarioDto usuarioDto) {
+    public String editUser(@ModelAttribute UsuarioDto usuarioDto)throws Exception  {
         maintenanceUsuarioService.updateUser(usuarioDto);
         return "redirect:/maintenanceUsers/start";
     }
 
     @GetMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    public String deleteUser(@PathVariable("id") int id) throws Exception {
         maintenanceUsuarioService.deleteUser(id);
         return "redirect:/maintenanceUsers/start";
     }

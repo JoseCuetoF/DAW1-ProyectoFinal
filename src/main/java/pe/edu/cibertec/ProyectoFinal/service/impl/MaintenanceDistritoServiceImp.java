@@ -21,7 +21,7 @@ public class MaintenanceDistritoServiceImp implements MaintenanceDistritoService
     // FALTA AGREGAR
 
     @Override
-    public List<DistritoDto> getAllDistrito() {
+    public List<DistritoDto> getAllDistrito() throws Exception {
         List<DistritoDto> distritos = new ArrayList<DistritoDto>();
         Iterable<Distrito> iterable = distritoRepository.findAll();
         iterable.forEach(distrito -> {

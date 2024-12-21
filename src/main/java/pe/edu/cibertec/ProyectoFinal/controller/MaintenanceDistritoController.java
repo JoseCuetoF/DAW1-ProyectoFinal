@@ -19,7 +19,7 @@ public class MaintenanceDistritoController {
     MaintenanceDistritoService maintenanceDistritoService;
 
     @GetMapping("/start")
-    public String start(Model model){
+    public String start(Model model)throws Exception {
         List<DistritoDto> distritos = maintenanceDistritoService.getAllDistrito();
         model.addAttribute("distritos", distritos);
         return "maintenance-distrito";

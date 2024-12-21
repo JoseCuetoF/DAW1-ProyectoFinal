@@ -12,8 +12,6 @@ import pe.edu.cibertec.ProyectoFinal.service.MaintenanceUsuarioService;
 @RequestMapping("/manage")
 public class AdminController {
 
-    @Autowired
-    MaintenanceUsuarioService maintenanceUsuarioService;
 
     @GetMapping("/restricted")
     public String restricted (Model model) {

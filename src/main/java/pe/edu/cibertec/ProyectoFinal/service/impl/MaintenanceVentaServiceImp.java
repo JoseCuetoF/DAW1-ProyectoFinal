@@ -26,7 +26,7 @@ public class MaintenanceVentaServiceImp implements MaintenanceVentaService {
     DistritoRepository distritoRepository;
 
     @Override
-    public List<VentaDto> findAllVentas() {
+    public List<VentaDto> findAllVentas() throws Exception  {
         List<VentaDto> ventas = new ArrayList<>();
         Iterable<Venta> iterable = ventaRepository.findAll();
         iterable.forEach(venta -> {
@@ -45,7 +45,7 @@ public class MaintenanceVentaServiceImp implements MaintenanceVentaService {
     }
 
     @Override
-    public VentaDetailDto findVentaById(int id) {
+    public VentaDetailDto findVentaById(int id)throws Exception  {
        Optional<Venta> optional = ventaRepository.findById(id);
        return optional.map(venta -> new VentaDetailDto(
                venta.getIdVenta(),
@@ -67,7 +67,7 @@ public class MaintenanceVentaServiceImp implements MaintenanceVentaService {
     }
 
     @Override
-    public Boolean updateVenta(VentaDetailDto ventaDetailDto) {
+    public Boolean updateVenta(VentaDetailDto ventaDetailDto)throws Exception  {
         Optional<Venta> optional = ventaRepository.findById(ventaDetailDto.idVenta());
         return optional.map(venta -> {
             // Actualizar los campos simples
@@ -91,7 +91,7 @@ public class MaintenanceVentaServiceImp implements MaintenanceVentaService {
     }
 
     @Override
-    public Boolean deleteVenta(int id) {
+    public Boolean deleteVenta(int id)throws Exception  {
         return ventaRepository.findById(id).map(venta ->{
             ventaRepository.delete(venta);
             return true;
@@ -100,8 +100,8 @@ public class MaintenanceVentaServiceImp implements MaintenanceVentaService {
     }
 
     @Override
-    public List<DistritoDto> findAllDistritos() {
-        List<DistritoDto> distritos = new ArrayList<DistritoDto>();
+    public List<DistritoDto> findAllDistritos()throws Exception  {
+        List<DistritoDto> distritos = new ArrayList<>();
         Iterable<Distrito> iterable = distritoRepository.findAll();
 
         iterable.forEach(distrito -> {
